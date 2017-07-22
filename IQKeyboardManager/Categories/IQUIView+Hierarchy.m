@@ -103,7 +103,8 @@
                 //If it's not _UIQueuingScrollView class, actually we validate for _ prefix which usually used by Apple internal classes
                 if ([superview.superview isKindOfClass:[UITableView class]] == NO &&
                     [superview.superview isKindOfClass:[UITableViewCell class]] == NO &&
-                    [classNameString hasPrefix:@"_"] == NO)
+                    [classNameString hasPrefix:@"_"] == NO &&
+                    [classNameString isEqualToString:@"SWCellScrollView"] == NO)
                 {
                     return superview;
                 }
