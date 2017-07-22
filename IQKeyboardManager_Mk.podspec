@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/markalex25/IQKeyboardManager.git", :tag => "v#{s.version}" }
   s.source_files  = "IQKeyboardManager_Mk/**/*.{h,m}"
   s.resource = "IQKeyboardManager_Mk/Resources/IQKeyboardManager.bundle"
+  s.frameworks = "UIKit","Foundation","CoreGraphics","QuartzCore"
   s.ios.frameworks = "UIKit","Foundation","CoreGraphics","QuartzCore"
   s.requires_arc = true
 end
