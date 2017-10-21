@@ -1,5 +1,5 @@
 //
-// IQBarButtonItem.h
+// IQUIViewController+Additions.m
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -21,32 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import "IQUIViewController+Additions.h"
+#import <objc/runtime.h>
 
-#import <UIKit/UIBarButtonItem.h>
+@implementation UIViewController (Additions)
 
-@class NSInvocation;
+-(void)setIQLayoutGuideConstraint:(NSLayoutConstraint *)IQLayoutGuideConstraint
+{
+    objc_setAssociatedObject(self, @selector(IQLayoutGuideConstraint), IQLayoutGuideConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
-/**
- IQBarButtonItem used for IQToolbar.
- */
-@interface IQBarButtonItem : UIBarButtonItem
-
-/**
- Boolean to know if it's a system item or custom item
- */
-@property (nonatomic, readonly) BOOL isSystemItem;
-
-/**
- Additional target & action to do get callback action. Note that setting custom target & selector doesn't affect native functionality, this is just an additional target to get a callback.
- 
- @param target Target object.
- @param action Target Selector.
- */
--(void)setTarget:(nullable id)target action:(nullable SEL)action;
-
-/**
- Customized Invocation to be called when button is pressed. invocation is internally created using setTarget:action: method.
- */
-@property (nullable, strong, nonatomic) NSInvocation *invocation;
+-(NSLayoutConstraint *)IQLayoutGuideConstraint
+{
+    return objc_getAssociatedObject(self, @selector(IQLayoutGuideConstraint));
+}
 
 @end

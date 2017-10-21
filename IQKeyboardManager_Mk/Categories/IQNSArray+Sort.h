@@ -1,5 +1,5 @@
 //
-// IQBarButtonItem.h
+// IQNSArray+Sort.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -21,32 +21,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
-#import <UIKit/UIBarButtonItem.h>
-
-@class NSInvocation;
+#import <Foundation/NSArray.h>
 
 /**
- IQBarButtonItem used for IQToolbar.
+ UIView.subviews sorting category.
  */
-@interface IQBarButtonItem : UIBarButtonItem
+@interface NSArray (IQ_NSArray_Sort)
+
+///--------------
+/// @name Sorting
+///--------------
 
 /**
- Boolean to know if it's a system item or custom item
+ Returns the array by sorting the UIView's by their tag property.
  */
-@property (nonatomic, readonly) BOOL isSystemItem;
+@property (nonatomic, readonly, copy) NSArray * _Nonnull sortedArrayByTag;
 
 /**
- Additional target & action to do get callback action. Note that setting custom target & selector doesn't affect native functionality, this is just an additional target to get a callback.
- 
- @param target Target object.
- @param action Target Selector.
+ Returns the array by sorting the UIView's by their tag property.
  */
--(void)setTarget:(nullable id)target action:(nullable SEL)action;
-
-/**
- Customized Invocation to be called when button is pressed. invocation is internally created using setTarget:action: method.
- */
-@property (nullable, strong, nonatomic) NSInvocation *invocation;
+@property (nonatomic, readonly, copy) NSArray * _Nonnull sortedArrayByPosition;
 
 @end

@@ -1,5 +1,5 @@
 //
-// IQBarButtonItem.h
+// IQTextView.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -21,32 +21,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import "IQKeyboardManagerConstants.h"
 
-#import <UIKit/UIBarButtonItem.h>
-
-@class NSInvocation;
-
-/**
- IQBarButtonItem used for IQToolbar.
- */
-@interface IQBarButtonItem : UIBarButtonItem
+#import <UIKit/UITextView.h>
 
 /**
- Boolean to know if it's a system item or custom item
+ UITextView with placeholder support
  */
-@property (nonatomic, readonly) BOOL isSystemItem;
+@interface IQTextView : UITextView
 
 /**
- Additional target & action to do get callback action. Note that setting custom target & selector doesn't affect native functionality, this is just an additional target to get a callback.
- 
- @param target Target object.
- @param action Target Selector.
+ Set textView's placeholder text. Default is nil.
  */
--(void)setTarget:(nullable id)target action:(nullable SEL)action;
-
-/**
- Customized Invocation to be called when button is pressed. invocation is internally created using setTarget:action: method.
- */
-@property (nullable, strong, nonatomic) NSInvocation *invocation;
+@property(nullable, nonatomic,copy) IBInspectable NSString    *placeholder;
 
 @end
+
+
+
+
